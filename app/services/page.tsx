@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 
 const services = [
   {
@@ -10,7 +10,7 @@ const services = [
   {
     icon: '/images/icon-earthworks.png',
     title: 'Earthworks',
-    desc: 'Precision land grading, excavation, and site preparation â€” ensuring proper drainage and a solid foundation for any project.',
+    desc: 'Precision land grading, excavation, and site preparation — ensuring proper drainage and a solid foundation for any project.',
     items: ['Residential Grading', 'Commercial Site Grading', 'Excavation', 'Drainage Correction', 'Lot Leveling', 'Subgrade Preparation'],
   },
 ]
@@ -61,7 +61,7 @@ export default function Services() {
       {/* CTA */}
       <section className="bg-[#F4E7C9] py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-black text-black mb-4">Not Sure What You Need?</h2>
-        <p className="text-black/70 mb-8 text-lg">Call us or request a quote â€” we&apos;ll assess your project and recommend the right solution.</p>
+        <p className="text-black/70 mb-8 text-lg">Call us or request a quote &mdash; we&apos;ll assess your project and recommend the right solution.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/contact" className="bg-black hover:bg-zinc-900 text-white font-black px-10 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 inline-block">
             Get a Free Quote

@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 
 const values = [
   { title: 'Quality First', desc: 'We never cut corners. Every project is completed to the highest standard, using premium materials and proven techniques.' },
@@ -32,7 +32,7 @@ export default function About() {
               RMG Construction was founded with a simple mission: deliver quality construction work that homeowners and businesses can trust. Over the past decade, we have grown from a small crew to one of Central Texas&apos;s most respected construction companies.
             </p>
             <p className="text-gray-400 leading-relaxed mb-4">
-              We specialize in concrete work and earthworks â€” handling everything from residential driveways to large-scale commercial site preparation.
+              We specialize in concrete work and earthworks &mdash; handling everything from residential driveways to large-scale commercial site preparation.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
               Every project, regardless of size, receives the same level of dedication and attention to detail. We treat your property like our own.
@@ -82,7 +82,7 @@ export default function About() {
               </span>
             ))}
           </div>
-          <p className="text-gray-500 text-sm mt-8">Not sure if we serve your area? Give us a call â€” we may be able to help.</p>
+          <p className="text-gray-500 text-sm mt-8">Not sure if we serve your area? Give us a call &mdash; we may be able to help.</p>
         </div>
       </section>
 

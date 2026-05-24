@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 
 const services = [
   { icon: '/images/icon-concrete.png', title: 'Concrete', desc: 'Driveways, slabs, foundations, flatwork, and decorative concrete for residential and commercial projects.' },
@@ -18,14 +18,11 @@ const testimonials = [
   { name: 'Carlos T.', text: 'From grading to concrete work, RMG handled everything seamlessly. The crew was professional and the results were perfect.' },
 ]
 
-const areas = ['Austin', 'San Marcos', 'Buda', 'Kyle', 'Bastrop', 'Round Rock', 'Georgetown']
-
 export default function Home() {
   return (
     <>
       {/* HERO */}
       <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
-        {/* Animated ken-burns background */}
         <div className="hero-bg absolute inset-0 z-0 bg-[url('/images/hero.jpg')] bg-cover bg-center" />
         <div className="stripe-overlay absolute inset-0 z-[1]" />
         <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/70 via-black/40 to-black/85" />
@@ -37,7 +34,7 @@ export default function Home() {
             <span className="text-[#F4E7C9]">CONSTRUCTION</span>
           </h1>
           <p className="fade-up-2 text-gray-300 text-base sm:text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
-            Concrete Â· Earthworks
+            Concrete &middot; Earthworks
           </p>
           <p className="fade-up-3 text-[#F4E7C9] text-xs font-bold tracking-[0.35em] uppercase mb-10">
             Serving Austin &amp; Surrounding Areas
@@ -72,7 +69,7 @@ export default function Home() {
                 <img src={s.icon} alt={s.title} className="w-16 h-16 object-contain" />
                 <h3 className="text-xl font-bold text-white group-hover:text-[#F4E7C9] transition-colors">{s.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed flex-1">{s.desc}</p>
-                <Link href="/services" className="text-[#F4E7C9] text-sm font-semibold hover:underline mt-auto">Learn more â†’</Link>
+                <Link href="/services" className="text-[#F4E7C9] text-sm font-semibold hover:underline mt-auto">Learn more &rarr;</Link>
               </div>
             ))}
           </div>
@@ -106,10 +103,9 @@ export default function Home() {
               Fully licensed and insured, with transparent pricing, on-time completion, and craftsmanship that lasts.
             </p>
             <Link href="/about" className="inline-flex items-center gap-2 text-[#F4E7C9] font-bold hover:gap-4 transition-all">
-              About Us <span>â†’</span>
+              About Us <span>&rarr;</span>
             </Link>
           </div>
-          {/* Replace with <Image> when assets are ready */}
           <div className="relative h-80 md:h-[420px] rounded-xl overflow-hidden bg-[#141414] border border-white/5 flex items-center justify-center">
             <span className="text-gray-600 text-sm">[ Photo goes here ]</span>
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#F4E7C9]/0 via-[#F4E7C9] to-[#F4E7C9]/0" />
@@ -133,7 +129,7 @@ export default function Home() {
                 <div className="flex items-center gap-3 pt-4 border-t border-white/5">
                   <div className="w-9 h-9 rounded-full bg-[#F4E7C9] flex items-center justify-center font-black text-black text-sm">{t.name[0]}</div>
                   <span className="font-semibold text-white text-sm">{t.name}</span>
-                  <div className="ml-auto text-[#F4E7C9] text-xs tracking-wider">â˜…â˜…â˜…â˜…â˜…</div>
+                  <div className="ml-auto text-[#F4E7C9] text-xs tracking-wider">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 </div>
               </div>
             ))}
