@@ -9,7 +9,7 @@ interface Props {
 
 export default function BeforeAfterSlider({ before, after }: Props) {
   const [position, setPosition] = useState(50)
-  const [dragging, setDragging] = useState(false)
+  const dragging = useRef(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const updatePosition = useCallback((clientX: number) => {
@@ -20,20 +20,44 @@ export default function BeforeAfterSlider({ before, after }: Props) {
   }, [])
 
   useEffect(() => {
-    const onUp = () => setDragging(false)
-    const onMove = (e: MouseEvent) => { if (dragging) updatePosition(e.clientX) }
-    window.addEventListener('mouseup', onUp)
-    window.addEventListener('mousemove', onMove)
-    return () => {
-      window.removeEventListener('mouseup', onUp)
-      window.removeEventListener('mousemove', onMove)
+    const container = containerRef.current
+    if (!container) return
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!dragging.current) return
+      updatePosition(e.clientX)
     }
-  }, [dragging, updatePosition])
+    const onMouseUp = () => { dragging.current = false }
+
+    // passive: false so preventDefault() works and blocks page scroll
+    const onTouchMove = (e: TouchEvent) => {
+      if (!dragging.current) return
+      e.preventDefault()
+      updatePosition(e.touches[0].clientX)
+    }
+    const onTouchEnd = () => { dragging.current = false }
+
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseup', onMouseUp)
+    container.addEventListener('touchmove', onTouchMove, { passive: false })
+    container.addEventListener('touchend', onTouchEnd)
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('mouseup', onMouseUp)
+      container.removeEventListener('touchmove', onTouchMove)
+      container.removeEventListener('touchend', onTouchEnd)
+    }
+  }, [updatePosition])
+
+  const startDrag = () => { dragging.current = true }
 
   return (
     <div
       ref={containerRef}
       className="relative w-full h-full overflow-hidden rounded-xl select-none cursor-ew-resize"
+      onMouseDown={startDrag}
+      onTouchStart={startDrag}
     >
       {/* After — base layer, always full width */}
       <img
@@ -64,11 +88,8 @@ export default function BeforeAfterSlider({ before, after }: Props) {
 
       {/* Handle */}
       <div
-        className="absolute top-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-xl cursor-ew-resize"
+        className="absolute top-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-xl cursor-ew-resize pointer-events-none"
         style={{ left: `${position}%`, transform: 'translate(-50%, -50%)' }}
-        onMouseDown={() => setDragging(true)}
-        onTouchStart={() => setDragging(true)}
-        onTouchMove={(e) => { e.preventDefault(); updatePosition(e.touches[0].clientX) }}
       >
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <path d="M6 4L2 9L6 14" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
