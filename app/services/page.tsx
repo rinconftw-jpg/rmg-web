@@ -9,21 +9,15 @@ const services = [
   },
   {
     icon: '🚜',
-    title: 'Grading',
-    desc: 'Proper land grading is essential for drainage, safety, and a stable building foundation. Our operators are experts in precision grading.',
-    items: ['Residential Grading', 'Commercial Site Grading', 'Drainage Correction', 'Lot Leveling', 'Subgrade Preparation', 'Finish Grading'],
+    title: 'Earthworks',
+    desc: 'Precision land grading, excavation, and site preparation — ensuring proper drainage and a solid foundation for any project.',
+    items: ['Residential Grading', 'Commercial Site Grading', 'Excavation', 'Drainage Correction', 'Lot Leveling', 'Subgrade Preparation'],
   },
   {
     icon: '💥',
     title: 'Demolition',
     desc: 'Safe, efficient, and complete demolition services for structures of all sizes, with full debris removal and site cleanup.',
     items: ['Structure Demolition', 'Concrete Demolition', 'Selective Demolition', 'Interior Strip-Out', 'Debris Hauling', 'Site Cleanup'],
-  },
-  {
-    icon: '🌲',
-    title: 'Land Clearing',
-    desc: 'We prepare your land for development by clearing trees, brush, and debris — leaving a clean, build-ready site.',
-    items: ['Tree & Brush Clearing', 'Stump Grinding & Removal', 'Lot Clearing', 'Right-of-Way Clearing', 'Mulching', 'Burn Pile Removal'],
   },
 ]
 

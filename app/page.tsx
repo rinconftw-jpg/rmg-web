@@ -2,9 +2,8 @@ import Link from 'next/link'
 
 const services = [
   { icon: '🏗️', title: 'Concrete', desc: 'Driveways, slabs, foundations, flatwork, and decorative concrete for residential and commercial projects.' },
-  { icon: '🚜', title: 'Grading', desc: 'Land grading, leveling, and site preparation to ensure proper drainage and a stable foundation.' },
+  { icon: '🚜', title: 'Earthworks', desc: 'Land grading, leveling, excavation, and site preparation for proper drainage and a stable foundation.' },
   { icon: '💥', title: 'Demolition', desc: 'Safe and efficient demolition of structures, concrete, and debris removal for any size project.' },
-  { icon: '🌲', title: 'Land Clearing', desc: 'Complete land clearing, brush removal, tree clearing, and site cleanup for development-ready lots.' },
 ]
 
 const stats = [
@@ -33,25 +32,22 @@ export default function Home() {
         <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/70 via-black/40 to-black/85" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent z-[3]" />
 
-        <div className="relative z-[4] text-center px-6 max-w-4xl mx-auto">
-          <p className="fade-up-1 text-orange-500 text-xs font-bold tracking-[0.35em] uppercase mb-5">
-            Serving Austin &amp; Surrounding Areas
-          </p>
-          <h1 className="fade-up-2 text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-5 tracking-tight">
+        <div className="relative z-[4] text-center px-4 max-w-4xl mx-auto">
+          <h1 className="fade-up-1 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-4 tracking-tight">
             <span className="text-white">RMG</span>{' '}
             <span className="text-shimmer">CONSTRUCTION</span>
           </h1>
-          <p className="fade-up-3 text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-3 leading-relaxed">
-            Concrete · Grading · Demolition · Land Clearing
+          <p className="fade-up-2 text-gray-300 text-base sm:text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
+            Concrete · Earthworks · Demolition
           </p>
-          <p className="fade-up-4 text-gray-500 text-sm mb-10">
-            {areas.join(' · ')} &amp; Surrounding Areas
+          <p className="fade-up-3 text-orange-500 text-xs font-bold tracking-[0.35em] uppercase mb-10">
+            Serving Austin &amp; Surrounding Areas
           </p>
-          <div className="fade-up-5 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-10 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-orange-500/30">
+          <div className="fade-up-4 flex flex-col sm:flex-row gap-4 justify-center px-2">
+            <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-orange-500/30">
               Get a Free Quote
             </Link>
-            <a href="tel:+15125551234" className="border border-white/20 hover:border-orange-500/60 text-white font-bold px-10 py-4 rounded text-sm tracking-widest uppercase transition-all hover:bg-white/5">
+            <a href="tel:+15125551234" className="border border-white/20 hover:border-orange-500/60 text-white font-bold px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:bg-white/5">
               Call Now
             </a>
           </div>
@@ -71,7 +67,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black text-white">Our Services</h2>
             <div className="section-divider w-24 mx-auto mt-6" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {services.map((s) => (
               <div key={s.title} className="card-hover bg-[#141414] border border-white/5 rounded-xl p-8 flex flex-col gap-4 group">
                 <span className="text-4xl">{s.icon}</span>

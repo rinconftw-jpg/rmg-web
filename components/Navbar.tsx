@@ -28,11 +28,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-orange-500 flex items-center justify-center rounded font-black text-black text-lg leading-none">
-            RMG
-          </div>
-          <span className="font-bold text-lg tracking-wide">
+        <Link href="/" className="flex items-center">
+          <span className="font-black text-lg tracking-wide">
             RMG <span className="text-orange-500">CONSTRUCTION</span>
           </span>
         </Link>
