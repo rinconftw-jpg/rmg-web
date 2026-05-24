@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const services = ['Concrete', 'Grading', 'Demolition', 'Land Clearing']
+const services = ['Concrete', 'Earthworks']
 const areas = ['Austin', 'San Marcos', 'Buda', 'Kyle', 'Bastrop', 'Round Rock', 'Georgetown']
 
 export default function Footer() {
@@ -10,9 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-orange-500 flex items-center justify-center rounded font-black text-black text-sm">RMG</div>
-              <span className="font-bold text-sm tracking-wide">RMG <span className="text-orange-500">CONSTRUCTION</span></span>
+            <div className="flex items-center mb-4">
+              <span className="font-black text-sm tracking-wide">RMG <span className="text-orange-500">CONSTRUCTION</span></span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               Quality construction services across Central Texas. Licensed & insured.
@@ -53,7 +52,7 @@ export default function Footer() {
               </li>
               <li className="text-gray-500 text-sm">📍 Austin, TX</li>
             </ul>
-            <Link href="/contact" className="inline-block mt-5 bg-orange-500 hover:bg-orange-600 text-black font-bold text-xs px-5 py-2.5 rounded tracking-widest uppercase transition-colors">
+            <Link href="/contact" className="inline-block mt-5 bg-white hover:bg-gray-100 text-black font-bold text-xs px-5 py-2.5 rounded tracking-widest uppercase transition-colors">
               Free Quote
             </Link>
           </div>

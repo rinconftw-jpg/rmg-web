@@ -34,7 +34,7 @@ export default function Home() {
         <div className="relative z-[4] text-center px-4 max-w-4xl mx-auto">
           <h1 className="fade-up-1 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-4 tracking-tight">
             <span className="text-white">RMG</span>{' '}
-            <span className="text-shimmer">CONSTRUCTION</span>
+            <span className="text-orange-500">CONSTRUCTION</span>
           </h1>
           <p className="fade-up-2 text-gray-300 text-base sm:text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
             Concrete · Earthworks
