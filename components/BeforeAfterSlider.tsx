@@ -11,6 +11,15 @@ export default function BeforeAfterSlider({ before, after }: Props) {
   const [position, setPosition] = useState(50)
   const [dragging, setDragging] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [containerWidth, setContainerWidth] = useState(0)
+
+  useEffect(() => {
+    const update = () => setContainerWidth(containerRef.current?.offsetWidth ?? 0)
+    update()
+    const ro = new ResizeObserver(update)
+    if (containerRef.current) ro.observe(containerRef.current)
+    return () => ro.disconnect()
+  }, [])
 
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return
@@ -19,66 +28,57 @@ export default function BeforeAfterSlider({ before, after }: Props) {
     setPosition((x / rect.width) * 100)
   }, [])
 
-  const handleMouseDown = () => setDragging(true)
-  const handleMouseUp = useCallback(() => setDragging(false), [])
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!dragging) return
-    updatePosition(e.clientX)
-  }, [dragging, updatePosition])
-
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    e.preventDefault()
-    updatePosition(e.touches[0].clientX)
-  }, [updatePosition])
-
   useEffect(() => {
-    window.addEventListener('mouseup', handleMouseUp)
-    window.addEventListener('mousemove', handleMouseMove)
+    const onUp = () => setDragging(false)
+    const onMove = (e: MouseEvent) => { if (dragging) updatePosition(e.clientX) }
+    window.addEventListener('mouseup', onUp)
+    window.addEventListener('mousemove', onMove)
     return () => {
-      window.removeEventListener('mouseup', handleMouseUp)
-      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseup', onUp)
+      window.removeEventListener('mousemove', onMove)
     }
-  }, [handleMouseMove, handleMouseUp])
+  }, [dragging, updatePosition])
 
   return (
     <div
       ref={containerRef}
       className="relative w-full h-full overflow-hidden rounded-xl select-none cursor-ew-resize"
     >
-      {/* Before image — base layer */}
+      {/* After — base layer, always full width (right side) */}
       <img
-        src={before}
-        alt="Before"
+        src={after}
+        alt="After"
         draggable={false}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* After image — clipped to reveal on left side */}
+      {/* Before — overflow-clipped div that shrinks as handle moves right */}
       <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+        className="absolute top-0 left-0 bottom-0 overflow-hidden"
+        style={{ width: `${position}%` }}
       >
         <img
-          src={after}
-          alt="After"
+          src={before}
+          alt="Before"
           draggable={false}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 h-full object-cover"
+          style={{ width: containerWidth > 0 ? `${containerWidth}px` : '100vw' }}
         />
       </div>
 
       {/* Divider line */}
       <div
-        className="absolute top-0 bottom-0 w-px bg-white/80 pointer-events-none"
-        style={{ left: `${position}%` }}
+        className="absolute top-0 bottom-0 w-0.5 bg-white/90 pointer-events-none"
+        style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
       />
 
       {/* Handle */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-xl flex items-center justify-center cursor-ew-resize z-10"
-        style={{ left: `${position}%` }}
-        onMouseDown={handleMouseDown}
-        onTouchMove={handleTouchMove}
-        onTouchStart={handleMouseDown}
+        className="absolute top-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-xl cursor-ew-resize"
+        style={{ left: `${position}%`, transform: 'translate(-50%, -50%)' }}
+        onMouseDown={() => setDragging(true)}
+        onTouchStart={() => setDragging(true)}
+        onTouchMove={(e) => { e.preventDefault(); updatePosition(e.touches[0].clientX) }}
       >
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <path d="M6 4L2 9L6 14" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
