@@ -23,43 +23,44 @@ export default function BeforeAfterSlider({ before, after }: Props) {
     const container = containerRef.current
     if (!container) return
 
-    const onMouseMove = (e: MouseEvent) => {
-      if (!dragging.current) return
-      updatePosition(e.clientX)
-    }
-    const onMouseUp = () => { dragging.current = false }
+    const onMouseDown  = () => { dragging.current = true }
+    const onMouseMove  = (e: MouseEvent) => { if (dragging.current) updatePosition(e.clientX) }
+    const onMouseUp    = () => { dragging.current = false }
 
-    // passive: false so preventDefault() works and blocks page scroll
-    const onTouchMove = (e: TouchEvent) => {
+    const onTouchStart = (e: TouchEvent) => {
+      dragging.current = true
+      updatePosition(e.touches[0].clientX)
+    }
+    const onTouchMove  = (e: TouchEvent) => {
       if (!dragging.current) return
       e.preventDefault()
       updatePosition(e.touches[0].clientX)
     }
-    const onTouchEnd = () => { dragging.current = false }
+    const onTouchEnd   = () => { dragging.current = false }
 
-    window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('mouseup', onMouseUp)
-    container.addEventListener('touchmove', onTouchMove, { passive: false })
-    container.addEventListener('touchend', onTouchEnd)
+    container.addEventListener('mousedown',  onMouseDown)
+    window.addEventListener('mousemove',     onMouseMove)
+    window.addEventListener('mouseup',       onMouseUp)
+    container.addEventListener('touchstart', onTouchStart, { passive: true })
+    container.addEventListener('touchmove',  onTouchMove,  { passive: false })
+    container.addEventListener('touchend',   onTouchEnd)
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('mouseup', onMouseUp)
-      container.removeEventListener('touchmove', onTouchMove)
-      container.removeEventListener('touchend', onTouchEnd)
+      container.removeEventListener('mousedown',  onMouseDown)
+      window.removeEventListener('mousemove',     onMouseMove)
+      window.removeEventListener('mouseup',       onMouseUp)
+      container.removeEventListener('touchstart', onTouchStart)
+      container.removeEventListener('touchmove',  onTouchMove)
+      container.removeEventListener('touchend',   onTouchEnd)
     }
   }, [updatePosition])
-
-  const startDrag = () => { dragging.current = true }
 
   return (
     <div
       ref={containerRef}
       className="relative w-full h-full overflow-hidden rounded-xl select-none cursor-ew-resize"
-      onMouseDown={startDrag}
-      onTouchStart={startDrag}
     >
-      {/* After — base layer, always full width */}
+      {/* After — base layer */}
       <img
         src={after}
         alt="After"
@@ -67,7 +68,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Before — clipped to left side, shrinks as handle moves right */}
+      {/* Before — clipped to left side */}
       <div
         className="absolute inset-0"
         style={{ clipPath: `inset(0 ${position}% 0 0)` }}
@@ -80,7 +81,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
         />
       </div>
 
-      {/* Divider line */}
+      {/* Divider */}
       <div
         className="absolute top-0 bottom-0 w-0.5 bg-white/90 pointer-events-none"
         style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
@@ -88,7 +89,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
 
       {/* Handle */}
       <div
-        className="absolute top-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-xl cursor-ew-resize pointer-events-none"
+        className="absolute top-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-xl pointer-events-none"
         style={{ left: `${position}%`, transform: 'translate(-50%, -50%)' }}
       >
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
