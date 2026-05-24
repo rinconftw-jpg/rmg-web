@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback } from 'react'
 
 interface Props {
   before: string
@@ -9,7 +9,6 @@ interface Props {
 
 export default function BeforeAfterSlider({ before, after }: Props) {
   const [position, setPosition] = useState(50)
-  const dragging = useRef(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const updatePosition = useCallback((clientX: number) => {
@@ -19,66 +18,40 @@ export default function BeforeAfterSlider({ before, after }: Props) {
     setPosition((x / rect.width) * 100)
   }, [])
 
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId)
+    updatePosition(e.clientX)
+  }
 
-    const onMouseDown  = (e: MouseEvent) => { e.preventDefault(); dragging.current = true }
-    const onMouseMove  = (e: MouseEvent) => { if (dragging.current) updatePosition(e.clientX) }
-    const onMouseUp    = () => { dragging.current = false }
-
-    const onTouchStart = (e: TouchEvent) => {
-      dragging.current = true
-      updatePosition(e.touches[0].clientX)
-    }
-    const onTouchMove  = (e: TouchEvent) => {
-      if (!dragging.current) return
-      e.preventDefault()
-      updatePosition(e.touches[0].clientX)
-    }
-    const onTouchEnd   = () => { dragging.current = false }
-
-    container.addEventListener('mousedown',  onMouseDown)
-    window.addEventListener('mousemove',     onMouseMove)
-    window.addEventListener('mouseup',       onMouseUp)
-    container.addEventListener('touchstart', onTouchStart, { passive: true })
-    container.addEventListener('touchmove',  onTouchMove,  { passive: false })
-    container.addEventListener('touchend',   onTouchEnd)
-
-    return () => {
-      container.removeEventListener('mousedown',  onMouseDown)
-      window.removeEventListener('mousemove',     onMouseMove)
-      window.removeEventListener('mouseup',       onMouseUp)
-      container.removeEventListener('touchstart', onTouchStart)
-      container.removeEventListener('touchmove',  onTouchMove)
-      container.removeEventListener('touchend',   onTouchEnd)
-    }
-  }, [updatePosition])
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.hasPointerCapture(e.pointerId)) return
+    updatePosition(e.clientX)
+  }
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full overflow-hidden rounded-xl select-none cursor-ew-resize"
+      className="relative w-full h-full overflow-hidden rounded-xl select-none touch-none cursor-ew-resize"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
     >
       {/* After — base layer */}
       <img
         src={after}
         alt="After"
         draggable={false}
-          onDragStart={(e) => e.preventDefault()}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
       {/* Before — clipped to left side */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{ clipPath: `inset(0 ${position}% 0 0)` }}
       >
         <img
           src={before}
           alt="Before"
           draggable={false}
-          onDragStart={(e) => e.preventDefault()}
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
