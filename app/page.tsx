@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import BeforeAfterSlider from '@/components/BeforeAfterSlider'
 
 const services = [
   { icon: '/images/icon-concrete.png', title: 'Concrete', desc: 'Driveways, slabs, foundations, flatwork, and decorative concrete for residential and commercial projects.' },
@@ -106,9 +107,11 @@ export default function Home() {
               About Us <span>&rarr;</span>
             </Link>
           </div>
-          <div className="relative h-80 md:h-[420px] rounded-xl overflow-hidden bg-[#141414] border border-white/5 flex items-center justify-center">
-            <span className="text-gray-600 text-sm">[ Photo goes here ]</span>
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#F4E7C9]/0 via-[#F4E7C9] to-[#F4E7C9]/0" />
+          <div className="relative h-80 md:h-[420px] rounded-xl overflow-hidden">
+            <BeforeAfterSlider
+              before="/images/Driveway Before.jpg"
+              after="/images/Driveway After.jpg"
+            />
           </div>
         </div>
       </section>
