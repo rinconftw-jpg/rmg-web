@@ -48,7 +48,7 @@ export default function Navbar() {
           <a href="tel:+15125551234" className="text-sm font-semibold text-orange-500 hover:text-orange-400 transition-colors">
             CALL NOW
           </a>
-          <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-bold text-sm px-5 py-2.5 rounded transition-colors">
+          <Link href="/contact" className="bg-white hover:bg-gray-100 text-black font-bold text-sm px-5 py-2.5 rounded transition-colors">
             FREE QUOTE
           </Link>
         </div>
@@ -71,7 +71,7 @@ export default function Navbar() {
           ))}
           <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
             <a href="tel:+15125551234" className="text-orange-500 font-bold">CALL NOW</a>
-            <Link href="/contact" onClick={() => setMenuOpen(false)} className="bg-orange-500 text-black font-bold px-4 py-2 rounded text-center">
+            <Link href="/contact" onClick={() => setMenuOpen(false)} className="bg-white text-black font-bold px-4 py-2 rounded text-center">
               FREE QUOTE
             </Link>
           </div>

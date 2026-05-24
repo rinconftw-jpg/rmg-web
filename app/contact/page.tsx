@@ -117,7 +117,7 @@ export default function Contact() {
                     <label className="text-xs text-gray-500 uppercase tracking-wider block mb-2">Project Details</label>
                     <textarea rows={4} placeholder="Describe your project..." className="w-full bg-[#1e1e1e] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-orange-500 transition-colors resize-none" />
                   </div>
-                  <button type="submit" className="w-full bg-orange-500 hover:bg-orange-600 text-black font-black py-4 rounded-lg text-sm tracking-widest uppercase transition-all hover:scale-[1.02] shadow-lg shadow-orange-500/20">
+                  <button type="submit" className="w-full bg-white hover:bg-gray-100 text-black font-black py-4 rounded-lg text-sm tracking-widest uppercase transition-all hover:scale-[1.02] shadow-lg shadow-white/20">
                     Send Message & Request Quote
                   </button>
                 </form>

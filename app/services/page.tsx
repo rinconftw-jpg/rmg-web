@@ -38,7 +38,7 @@ export default function Services() {
                 <img src={s.icon} alt={s.title} className="w-20 h-20 object-contain mb-5" />
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-4">{s.title}</h2>
                 <p className="text-gray-400 leading-relaxed mb-8">{s.desc}</p>
-                <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-7 py-3 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 inline-block">
+                <Link href="/contact" className="bg-white hover:bg-gray-100 text-black font-black px-7 py-3 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 inline-block">
                   Get a Quote
                 </Link>
               </div>

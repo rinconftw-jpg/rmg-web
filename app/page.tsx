@@ -43,10 +43,10 @@ export default function Home() {
             Serving Austin &amp; Surrounding Areas
           </p>
           <div className="fade-up-4 flex flex-col sm:flex-row gap-4 justify-center px-2">
-            <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-orange-500/30">
+            <Link href="/contact" className="bg-white hover:bg-gray-100 text-black font-black px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-white/20">
               Get a Free Quote
             </Link>
-            <a href="tel:+15125551234" className="border border-white/20 hover:border-orange-500/60 text-white font-bold px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:bg-white/5">
+            <a href="tel:+15125551234" className="bg-[#1a1a1a] border border-white/10 hover:border-orange-500/50 text-orange-500 font-bold px-8 py-4 rounded text-sm tracking-widest uppercase transition-all">
               Call Now
             </a>
           </div>
@@ -149,10 +149,10 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Ready to Start Your Project?</h2>
           <p className="text-gray-400 mb-10 text-lg">Contact us today for a free, no-obligation quote.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-10 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-orange-500/20">
+            <Link href="/contact" className="bg-white hover:bg-gray-100 text-black font-black px-10 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-white/20">
               Get a Free Quote
             </Link>
-            <a href="tel:+15125551234" className="border border-orange-500/50 text-orange-500 hover:bg-orange-500 hover:text-black font-bold px-10 py-4 rounded text-sm tracking-widest uppercase transition-all">
+            <a href="tel:+15125551234" className="bg-[#1a1a1a] border border-white/10 hover:border-orange-500/50 text-orange-500 font-bold px-10 py-4 rounded text-sm tracking-widest uppercase transition-all">
               Call Us Now
             </a>
           </div>

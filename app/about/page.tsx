@@ -37,7 +37,7 @@ export default function About() {
             <p className="text-gray-400 leading-relaxed mb-8">
               Every project, regardless of size, receives the same level of dedication and attention to detail. We treat your property like our own.
             </p>
-            <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 inline-block">
+            <Link href="/contact" className="bg-white hover:bg-gray-100 text-black font-black px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 inline-block">
               Get a Free Quote
             </Link>
           </div>
