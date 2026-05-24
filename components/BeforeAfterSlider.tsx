@@ -11,15 +11,6 @@ export default function BeforeAfterSlider({ before, after }: Props) {
   const [position, setPosition] = useState(50)
   const [dragging, setDragging] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const [containerWidth, setContainerWidth] = useState(0)
-
-  useEffect(() => {
-    const update = () => setContainerWidth(containerRef.current?.offsetWidth ?? 0)
-    update()
-    const ro = new ResizeObserver(update)
-    if (containerRef.current) ro.observe(containerRef.current)
-    return () => ro.disconnect()
-  }, [])
 
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return
@@ -44,7 +35,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
       ref={containerRef}
       className="relative w-full h-full overflow-hidden rounded-xl select-none cursor-ew-resize"
     >
-      {/* After — base layer, always full width (right side) */}
+      {/* After — base layer, always full width */}
       <img
         src={after}
         alt="After"
@@ -52,17 +43,16 @@ export default function BeforeAfterSlider({ before, after }: Props) {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Before — overflow-clipped div that shrinks as handle moves right */}
+      {/* Before — clipped to left side, shrinks as handle moves right */}
       <div
-        className="absolute top-0 left-0 bottom-0 overflow-hidden"
-        style={{ width: `${position}%` }}
+        className="absolute inset-0"
+        style={{ clipPath: `inset(0 ${position}% 0 0)` }}
       >
         <img
           src={before}
           alt="Before"
           draggable={false}
-          className="absolute top-0 left-0 h-full object-cover"
-          style={{ width: containerWidth > 0 ? `${containerWidth}px` : '100vw' }}
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
 
