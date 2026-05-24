@@ -1,9 +1,8 @@
 import Link from 'next/link'
 
 const services = [
-  { icon: '🏗️', title: 'Concrete', desc: 'Driveways, slabs, foundations, flatwork, and decorative concrete for residential and commercial projects.' },
-  { icon: '🚜', title: 'Earthworks', desc: 'Land grading, leveling, excavation, and site preparation for proper drainage and a stable foundation.' },
-  { icon: '💥', title: 'Demolition', desc: 'Safe and efficient demolition of structures, concrete, and debris removal for any size project.' },
+  { icon: '/images/icon-concrete.png', title: 'Concrete', desc: 'Driveways, slabs, foundations, flatwork, and decorative concrete for residential and commercial projects.' },
+  { icon: '/images/icon-earthworks.png', title: 'Earthworks', desc: 'Land grading, leveling, excavation, and site preparation for proper drainage and a stable foundation.' },
 ]
 
 const stats = [
@@ -38,7 +37,7 @@ export default function Home() {
             <span className="text-shimmer">CONSTRUCTION</span>
           </h1>
           <p className="fade-up-2 text-gray-300 text-base sm:text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
-            Concrete · Earthworks · Demolition
+            Concrete · Earthworks
           </p>
           <p className="fade-up-3 text-orange-500 text-xs font-bold tracking-[0.35em] uppercase mb-10">
             Serving Austin &amp; Surrounding Areas
@@ -67,10 +66,10 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black text-white">Our Services</h2>
             <div className="section-divider w-24 mx-auto mt-6" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-6">
             {services.map((s) => (
               <div key={s.title} className="card-hover bg-[#141414] border border-white/5 rounded-xl p-8 flex flex-col gap-4 group">
-                <span className="text-4xl">{s.icon}</span>
+                <img src={s.icon} alt={s.title} className="w-16 h-16 object-contain" />
                 <h3 className="text-xl font-bold text-white group-hover:text-orange-500 transition-colors">{s.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed flex-1">{s.desc}</p>
                 <Link href="/services" className="text-orange-500 text-sm font-semibold hover:underline mt-auto">Learn more →</Link>

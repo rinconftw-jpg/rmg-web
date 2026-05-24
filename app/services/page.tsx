@@ -2,22 +2,16 @@ import Link from 'next/link'
 
 const services = [
   {
-    icon: '🏗️',
+    icon: '/images/icon-concrete.png',
     title: 'Concrete',
     desc: 'From driveways and sidewalks to foundations and decorative flatwork, we handle all types of concrete projects with precision.',
     items: ['Driveways & Parking Lots', 'Slabs & Foundations', 'Sidewalks & Walkways', 'Retaining Walls', 'Decorative Concrete', 'Concrete Repair'],
   },
   {
-    icon: '🚜',
+    icon: '/images/icon-earthworks.png',
     title: 'Earthworks',
     desc: 'Precision land grading, excavation, and site preparation — ensuring proper drainage and a solid foundation for any project.',
     items: ['Residential Grading', 'Commercial Site Grading', 'Excavation', 'Drainage Correction', 'Lot Leveling', 'Subgrade Preparation'],
-  },
-  {
-    icon: '💥',
-    title: 'Demolition',
-    desc: 'Safe, efficient, and complete demolition services for structures of all sizes, with full debris removal and site cleanup.',
-    items: ['Structure Demolition', 'Concrete Demolition', 'Selective Demolition', 'Interior Strip-Out', 'Debris Hauling', 'Site Cleanup'],
   },
 ]
 
@@ -41,7 +35,7 @@ export default function Services() {
           {services.map((s, i) => (
             <div key={s.title} className={`grid md:grid-cols-2 gap-12 items-center py-16 ${i !== services.length - 1 ? 'border-b border-white/5' : ''}`}>
               <div className={i % 2 === 1 ? 'md:order-2' : ''}>
-                <div className="text-5xl mb-5">{s.icon}</div>
+                <img src={s.icon} alt={s.title} className="w-20 h-20 object-contain mb-5" />
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-4">{s.title}</h2>
                 <p className="text-gray-400 leading-relaxed mb-8">{s.desc}</p>
                 <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-7 py-3 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 inline-block">

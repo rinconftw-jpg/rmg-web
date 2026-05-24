@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const services = ['Concrete', 'Earthworks', 'Demolition', 'Multiple Services', 'Other']
+const services = ['Concrete', 'Earthworks', 'Both Services', 'Other']
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
