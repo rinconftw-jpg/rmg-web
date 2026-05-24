@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
-              <span className="font-black text-sm tracking-wide">RMG <span className="text-orange-500">CONSTRUCTION</span></span>
+              <span className="font-black text-sm tracking-wide">RMG <span className="text-[#F4E7C9]">CONSTRUCTION</span></span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               Quality construction services across Central Texas. Licensed & insured.
@@ -24,7 +24,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {services.map((s) => (
                 <li key={s}>
-                  <Link href="/services" className="text-gray-500 hover:text-orange-500 text-sm transition-colors">{s}</Link>
+                  <Link href="/services" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">{s}</Link>
                 </li>
               ))}
             </ul>
@@ -45,12 +45,12 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+15125551234" className="text-gray-500 hover:text-orange-500 text-sm transition-colors">📞 (512) 555-1234</a>
+                <a href="tel:+15125551234" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">(512) 555-1234</a>
               </li>
               <li>
-                <a href="mailto:info@rmgconstruction.com" className="text-gray-500 hover:text-orange-500 text-sm transition-colors">✉️ info@rmgconstruction.com</a>
+                <a href="mailto:info@rmgconstruction.com" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">info@rmgconstruction.com</a>
               </li>
-              <li className="text-gray-500 text-sm">📍 Austin, TX</li>
+              <li className="text-gray-500 text-sm">Austin, TX</li>
             </ul>
             <Link href="/contact" className="inline-block mt-5 bg-white hover:bg-gray-100 text-black font-bold text-xs px-5 py-2.5 rounded tracking-widest uppercase transition-colors">
               Free Quote
@@ -61,7 +61,7 @@ export default function Footer() {
         <div className="section-divider mb-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
-          <p>© {new Date().getFullYear()} RMG Construction. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} RMG Construction. All rights reserved.</p>
           <p>Licensed & Insured · Serving Central Texas</p>
         </div>
       </div>
