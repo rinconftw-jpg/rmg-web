@@ -24,7 +24,12 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative h-[70vh] sm:h-screen min-h-[500px] sm:min-h-[640px] flex items-center justify-center overflow-hidden">
-        <div className="hero-bg absolute inset-0 z-0 bg-[url('/images/hero.jpg')] bg-cover bg-[center_40%] sm:bg-center" />
+        <img
+          src="/images/hero.jpg"
+          alt=""
+          aria-hidden="true"
+          className="hero-bg absolute inset-0 w-full h-full object-cover object-[30%_center] sm:object-center"
+        />
         <div className="stripe-overlay absolute inset-0 z-[1]" />
         <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/70 via-black/40 to-black/85" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F4E7C9] to-transparent z-[3]" />

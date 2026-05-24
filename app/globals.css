@@ -34,6 +34,11 @@ body {
   }
 }
 
+/* Prevent layout shift from img element */
+.hero-bg[src] {
+  display: block;
+}
+
 /* ── Gradient shimmer for text ── */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
