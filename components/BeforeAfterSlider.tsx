@@ -23,7 +23,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
     const container = containerRef.current
     if (!container) return
 
-    const onMouseDown  = () => { dragging.current = true }
+    const onMouseDown  = (e: MouseEvent) => { e.preventDefault(); dragging.current = true }
     const onMouseMove  = (e: MouseEvent) => { if (dragging.current) updatePosition(e.clientX) }
     const onMouseUp    = () => { dragging.current = false }
 
@@ -65,6 +65,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
         src={after}
         alt="After"
         draggable={false}
+          onDragStart={(e) => e.preventDefault()}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
@@ -77,6 +78,7 @@ export default function BeforeAfterSlider({ before, after }: Props) {
           src={before}
           alt="Before"
           draggable={false}
+          onDragStart={(e) => e.preventDefault()}
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
