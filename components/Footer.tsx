@@ -1,7 +1,5 @@
 import Link from 'next/link'
-
-const services = ['Concrete', 'Earthworks']
-const areas = ['Austin', 'San Marcos', 'Buda', 'Kyle', 'Bastrop', 'Round Rock', 'Georgetown']
+import { SITE, SERVICES } from '@/lib/siteData'
 
 export default function Footer() {
   return (
@@ -11,10 +9,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
-              <span className="font-black text-sm tracking-wide">RMG <span className="text-[#F4E7C9]">CONSTRUCTION</span></span>
+              <span className="font-black text-sm tracking-wide">
+                RMG <span className="text-[#F4E7C9]">CONSTRUCTION</span>
+              </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Quality construction services across Central Texas. Licensed & insured.
+              Quality driveway and earthwork services across Central Texas. Licensed &amp; insured.
             </p>
           </div>
 
@@ -22,11 +22,18 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Services</h4>
             <ul className="space-y-2">
-              {services.map((s) => (
-                <li key={s}>
-                  <Link href="/services" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">{s}</Link>
+              {SERVICES.map((s) => (
+                <li key={s.href}>
+                  <Link href={s.href} className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">
+                    {s.title}
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/services" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">
+                  Concrete Work
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -34,8 +41,8 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Service Areas</h4>
             <ul className="space-y-2">
-              {areas.map((a) => (
-                <li key={a} className="text-gray-500 text-sm">{a}</li>
+              {SITE.areas.map((a) => (
+                <li key={a} className="text-gray-500 text-sm">{a}, TX</li>
               ))}
             </ul>
           </div>
@@ -45,14 +52,21 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+15125551234" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">(512) 555-1234</a>
+                <a href={SITE.phoneLink} className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">
+                  {SITE.phone}
+                </a>
               </li>
               <li>
-                <a href="mailto:info@rmgconstruction.com" className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">info@rmgconstruction.com</a>
+                <a href={`mailto:${SITE.email}`} className="text-gray-500 hover:text-[#F4E7C9] text-sm transition-colors">
+                  {SITE.email}
+                </a>
               </li>
-              <li className="text-gray-500 text-sm">Austin, TX</li>
+              <li className="text-gray-500 text-sm">Austin, TX &amp; Surrounding Areas</li>
             </ul>
-            <Link href="/contact" className="inline-block mt-5 bg-white hover:bg-gray-100 text-black font-bold text-xs px-5 py-2.5 rounded tracking-widest uppercase transition-colors">
+            <Link
+              href="/contact"
+              className="inline-block mt-5 bg-white hover:bg-gray-100 text-black font-bold text-xs px-5 py-2.5 rounded tracking-widest uppercase transition-colors"
+            >
               Free Quote
             </Link>
           </div>
@@ -62,7 +76,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
           <p>&copy; {new Date().getFullYear()} RMG Construction. All rights reserved.</p>
-          <p>Licensed & Insured · Serving Central Texas</p>
+          <p>Licensed &amp; Insured &middot; Serving Central Texas</p>
         </div>
       </div>
     </footer>
