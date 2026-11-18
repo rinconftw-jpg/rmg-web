@@ -32,17 +32,16 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F4E7C9] to-transparent z-[3]" />
 
         <div className="relative z-[4] text-center px-4 max-w-4xl mx-auto">
-          <h1 className="fade-up-1 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-4 tracking-tight">
-            <span className="text-[#F4E7C9]">RMG</span>{' '}
-            <span className="text-[#F4E7C9]">CONSTRUCTION</span>
+          <p className="fade-up-1 text-[#F4E7C9] text-xs font-bold tracking-[0.35em] uppercase mb-4">
+            RMG Construction &mdash; Austin, TX
+          </p>
+          <h1 className="fade-up-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-5 tracking-tight text-white">
+            Driveway Installation &amp;<br className="hidden sm:block" /> Land Grading in Austin, TX
           </h1>
-          <p className="fade-up-2 text-white text-lg sm:text-xl md:text-2xl font-bold max-w-2xl mx-auto mb-3 leading-snug">
-            Driveway Installation &amp; Land Grading in Austin, TX
+          <p className="fade-up-3 text-gray-300 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+            Gravel driveways, roadbase, asphalt millings, land grading, and site preparation — serving the Greater Austin area.
           </p>
-          <p className="fade-up-3 text-[#F4E7C9] text-xs font-bold tracking-[0.35em] uppercase mb-10">
-            Serving Austin &amp; Surrounding Areas
-          </p>
-          <div className="fade-up-4 flex flex-col sm:flex-row gap-4 justify-center px-2">
+          <div className="fade-up-4 flex flex-col sm:flex-row gap-4 justify-center px-2 mt-2">
             <Link
               href="/contact"
               className="bg-white hover:bg-gray-100 text-black font-black px-8 py-4 rounded text-sm tracking-widest uppercase transition-all hover:scale-105 shadow-lg shadow-white/20"
